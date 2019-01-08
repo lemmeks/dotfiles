@@ -1,0 +1,9 @@
+[user]
+	name = Carson
+	email = lemmeks@gmail.com
+[credential]
+	helper = cache --timeout=3600
+[push]
+	default = simple
+[core]
+	editor = nano
