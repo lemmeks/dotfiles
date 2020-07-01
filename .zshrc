@@ -90,6 +90,8 @@ prompt_context () { }
 prompt_dir() {
   prompt_segment blue black "${PWD##*/}"
 }
+# gets csv header and turns it into a BQ schema json
+alias csvToBqSchema="tr -d '\r\n|\r|\n' | sed 's/[^,]*/  {"name": \0}/g' | sed 's/,/,\n/g' | sed '1 s/^/[\n/' | sed '$ s/$/\n]/' | xclip"
 
 
 # remove and link the given s3cfg file name
