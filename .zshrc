@@ -107,7 +107,14 @@ function s3cfg () {
 
 #PATH=/usr/local/pgsql/bin:$PATH
 #export PATH
+. $HOME/.asdf/asdf.sh
 
+. $HOME/.asdf/completions/asdf.bash
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# pip
+# export PATH=~/.local/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/carson/.sdkman"
@@ -116,6 +123,20 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/bin:$PATH"
 
 
-. $HOME/.asdf/asdf.sh
 
-. $HOME/.asdf/completions/asdf.bash
+
+#virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=~/virtualenvs
+source ~/.local/bin/virtualenvwrapper.sh
+
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
+eval "$(pyenv virtualenv-init -)"
