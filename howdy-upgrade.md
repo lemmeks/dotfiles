@@ -1,4 +1,4 @@
-# Install howdy after upgrade from 20.04 to 22.04
+# Install howdy after upgrade Dell XPS 13 (9310) from 20.04 to 22.04
 Uninstall existing howdy with
 ```sh
 sudo apt remove howdy
