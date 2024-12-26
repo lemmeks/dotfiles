@@ -62,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+export EDITOR='vim'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -84,7 +85,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ts="tig status"
-alias mformat="mix format --check-equivalent"
+alias mformat="mix format"
+alias mxt="MIX_TEST=test mix test"
 
 prompt_context () { }
 prompt_dir() {
@@ -92,7 +94,8 @@ prompt_dir() {
 }
 # gets csv header and turns it into a BQ schema json
 alias csvToBqSchema="tr -d '\r\n|\r|\n' | sed 's/[^,]*/  {"name": \0}/g' | sed 's/,/,\n/g' | sed '1 s/^/[\n/' | sed '$ s/$/\n]/' | xclip"
-
+# python alias for ubuntu 20.04 (the cmd python doesn't exist by default)
+# alias python=python3
 
 # remove and link the given s3cfg file name
 function s3cfg () {
@@ -105,13 +108,23 @@ function s3cfg () {
   fi
 }
 
+# erlang / umbrella build variables
+# KERL flags, when building erlang
+export KERL_INSTALL_HTMLDOCS=yes
+export KERL_INSTALL_MANPAGES=yes
+export KERL_BUILD_DOCS=yes
+
+# Shell history in Erlang/Elixir
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Rust / umbrella
+export PATH="$PATH:$HOME/.cargo/bin"
+
 #PATH=/usr/local/pgsql/bin:$PATH
 #export PATH
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 # pip
 # export PATH=~/.local/bin:$PATH
@@ -121,22 +134,17 @@ export SDKMAN_DIR="/home/carson/.sdkman"
 [[ -s "/home/carson/.sdkman/bin/sdkman-init.sh" ]] && source "/home/carson/.sdkman/bin/sdkman-init.sh"
 eval "$(direnv hook zsh)"
 export PATH="$HOME/bin:$PATH"
-
-
-
-
-#virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=~/virtualenvs
-source ~/.local/bin/virtualenvwrapper.sh
-
-export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
+# disable deprecation warning
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH="$HOME/bin:$PATH"
