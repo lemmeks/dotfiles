@@ -95,7 +95,7 @@ prompt_dir() {
 # gets csv header and turns it into a BQ schema json
 alias csvToBqSchema="tr -d '\r\n|\r|\n' | sed 's/[^,]*/  {"name": \0}/g' | sed 's/,/,\n/g' | sed '1 s/^/[\n/' | sed '$ s/$/\n]/' | xclip"
 # python alias for ubuntu 20.04 (the cmd python doesn't exist by default)
-# alias python=python3
+alias python=python3
 
 # remove and link the given s3cfg file name
 function s3cfg () {
@@ -123,8 +123,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 #PATH=/usr/local/pgsql/bin:$PATH
 #export PATH
 . $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/completions/asdf.bash
 
 # pip
 # export PATH=~/.local/bin:$PATH
