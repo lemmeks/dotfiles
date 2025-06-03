@@ -5,7 +5,7 @@ If you can't get the fonts to install properly via `apt`, the following commands
 ```sh
 git clone https://github.com/abertsch/Menlo-for-Powerline.git
 cd Menlo-for-Powerline
-sudo mv Menlo*.tff /usr/share/fonts
+sudo mv "Menlo*.tff" /usr/share/fonts
 ```
 
 ## If `sudo mv Menlo*.tff /usr/share/fonts` does not work
